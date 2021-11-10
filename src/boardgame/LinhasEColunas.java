@@ -1,11 +1,11 @@
 package boardgame;
 
-public class Tabuleiro {
+public class LinhasEColunas {
 	
 	private int linha;
 	private int coluna;
 	
-	public Tabuleiro(int linha, int coluna) {
+	public LinhasEColunas(int linha, int coluna) {
 		this.linha = linha;
 		this.coluna = coluna;
 	}
