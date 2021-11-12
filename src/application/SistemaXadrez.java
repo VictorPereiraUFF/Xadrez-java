@@ -13,5 +13,9 @@ public class SistemaXadrez {
 		int c = sc.nextInt();
 
 		System.out.println("Posição: " + l +", " + c);
-	}
+		
+		sc.close();
+		
+		
+		}
 }
