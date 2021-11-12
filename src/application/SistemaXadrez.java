@@ -2,6 +2,8 @@ package application;
 
 import java.util.Scanner;
 
+import xadrez.Partida;
+
 public class SistemaXadrez {
 
 	public static void main(String[] args) {
@@ -9,10 +11,15 @@ public class SistemaXadrez {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Bora jogar xadrez?");
-		int l = sc.nextInt();
-		int c = sc.nextInt();
+		System.out.println();
 
-		System.out.println("Posição: " + l +", " + c);
+		Partida partida = new Partida();
+		Interface.printTabuleiro(partida.getPecas());
+		
+		
+		
+		
+		
 		
 		sc.close();
 		
