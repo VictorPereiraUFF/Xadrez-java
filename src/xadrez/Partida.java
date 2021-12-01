@@ -12,8 +12,8 @@ public class Partida {
 	
 	public XadrezPecas[][] getPecas() {
 		XadrezPecas [][] mat = new XadrezPecas[tabuleiro.getLinhas()][tabuleiro.getColunas()];
-		for (int i=0; i<8; i++) {
-			for (int j=0; j<8; j++) {
+		for (int i=0; i<tabuleiro.getLinhas(); i++) {
+			for (int j=0; j<tabuleiro.getColunas(); j++) {
 				mat[i][j] = (XadrezPecas) tabuleiro.pecas(i,j);
 			}
 		}
