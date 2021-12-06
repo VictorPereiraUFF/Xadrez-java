@@ -1,6 +1,7 @@
 package xadrez;
 
 import boardgame.Tabuleiro;
+import xadrez.pecas.*;
 
 public class Partida {
 	
@@ -19,6 +20,9 @@ public class Partida {
 		}
 		return mat;
 		
+		private void setupInicial() {
+			tabuleiro.placePiece(new Peao(tabuleiro, color.BRANCO), new Posicao(2, 6));
+		 }
 	}
 	
 
