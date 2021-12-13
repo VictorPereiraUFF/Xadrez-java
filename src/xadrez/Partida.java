@@ -12,8 +12,6 @@ public class Partida {
 		tabuleiro = new Tabuleiro (8, 8);
 		setupInicial();
 	}
-	
-	
 
 	public XadrezPecas[][] getPecas() {
 		XadrezPecas [][] mat = new XadrezPecas[tabuleiro.getLinhas()][tabuleiro.getColunas()];
@@ -27,8 +25,7 @@ public class Partida {
 		}
 		
 		private void setupInicial() {
-			tabuleiro.PosicaoPeca(new Peão(tabuleiro, XadrezJogador.BRANCO), new LinhasEColunas(2, 6));
-			
+			tabuleiro.PosicaoPeca(new Peão(tabuleiro, XadrezJogador.BRANCO), new LinhasEColunas(2, 6));			
 		}
 
 
