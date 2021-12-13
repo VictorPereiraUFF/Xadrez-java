@@ -24,6 +24,11 @@ public class Partida {
 			return mat;
 		}
 		
+		private void posicaoPecaNova (char coluna, int linha, XadrezPecas pecas) {
+			tabuleiro.PosicaoPeca(pecas, new XadrezPosicao(coluna, linha).toPosicao());
+		}
+	
+	
 		private void setupInicial() {
 			tabuleiro.PosicaoPeca(new Peão(tabuleiro, XadrezJogador.BRANCO), new LinhasEColunas(2, 6));			
 		}
