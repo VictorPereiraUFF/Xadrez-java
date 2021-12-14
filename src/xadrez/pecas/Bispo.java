@@ -10,5 +10,8 @@ public class Bispo extends XadrezPecas{
 		super(tabuleiro, xadrezJogador);
 	}
 
-	
+	@Override
+	public String toString() {
+		return "B";
+	}
 }

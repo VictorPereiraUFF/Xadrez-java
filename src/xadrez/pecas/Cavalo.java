@@ -10,4 +10,8 @@ public class Cavalo extends XadrezPecas{
 		super(tabuleiro, xadrezJogador);
 	}
 
+	@Override
+	public String toString() {
+		return "C";
+	}
 }

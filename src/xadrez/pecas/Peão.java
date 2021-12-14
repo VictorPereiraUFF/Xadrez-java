@@ -9,5 +9,10 @@ public class Peão extends XadrezPecas{
 	public Peão(Tabuleiro tabuleiro, XadrezJogador xadrezJogador) {
 		super(tabuleiro, xadrezJogador);
 	}
+	
+	@Override
+	public String toString() {
+		return "P";
+	}
 
 }

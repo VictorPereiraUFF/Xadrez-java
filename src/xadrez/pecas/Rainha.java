@@ -10,4 +10,8 @@ public class Rainha extends XadrezPecas{
 		super(tabuleiro, xadrezJogador);
 	}
 
+	@Override
+	public String toString() {
+		return "R";
+	}
 }
