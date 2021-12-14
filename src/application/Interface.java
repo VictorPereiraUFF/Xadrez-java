@@ -1,8 +1,24 @@
 package application;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import xadrez.XadrezPecas;
+import xadrez.XadrezPosicao;
 
 public class Interface {
+	
+	public static XadrezPosicao lerXadrezPosicao(Scanner sc) {
+		try {
+			String s = sc.nextLine();
+			char coluna = s.charAt(0);
+			int linha = Integer.parseInt(s.substring(1));
+			return new XadrezPosicao(coluna, linha);
+		}
+		catch (RuntimeException e) {
+			throw new InputMismatchException ("Erro: Dados Inválidos");
+		}
+	}
 	
 	public static void printTabuleiro(XadrezPecas[][] pecas) {
 		for (int i=0; i<pecas.length; i++) {
