@@ -42,6 +42,14 @@ public class Partida {
 			posicaoPecaNova('g', 1, new Cavalo(tabuleiro, XadrezJogador.BRANCO));
 			posicaoPecaNova('c', 1, new Bispo(tabuleiro, XadrezJogador.BRANCO));
 			posicaoPecaNova('f', 1, new Bispo(tabuleiro, XadrezJogador.BRANCO));
+			posicaoPecaNova('d', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
+			posicaoPecaNova('e', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
+			posicaoPecaNova('a', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
+			posicaoPecaNova('h', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
+			posicaoPecaNova('b', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
+			posicaoPecaNova('g', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
+			posicaoPecaNova('c', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
+			posicaoPecaNova('f', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
 			posicaoPecaNova('d', 8, new Rei(tabuleiro, XadrezJogador.PRETO));
 			posicaoPecaNova('e', 8, new Rainha(tabuleiro, XadrezJogador.PRETO));
 			posicaoPecaNova('a', 8, new Torre(tabuleiro, XadrezJogador.PRETO));
@@ -50,10 +58,14 @@ public class Partida {
 			posicaoPecaNova('g', 8, new Cavalo(tabuleiro, XadrezJogador.PRETO));
 			posicaoPecaNova('c', 8, new Bispo(tabuleiro, XadrezJogador.PRETO));
 			posicaoPecaNova('f', 8, new Bispo(tabuleiro, XadrezJogador.PRETO));
-
-
-
-			
+			posicaoPecaNova('d', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
+			posicaoPecaNova('e', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
+			posicaoPecaNova('a', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
+			posicaoPecaNova('h', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
+			posicaoPecaNova('b', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
+			posicaoPecaNova('g', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
+			posicaoPecaNova('c', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
+			posicaoPecaNova('f', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
 		}
 
 
