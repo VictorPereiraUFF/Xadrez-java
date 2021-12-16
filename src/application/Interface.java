@@ -8,6 +8,10 @@ import xadrez.XadrezPosicao;
 
 public class Interface {
 	
+	public static void limparTela() {
+		System.out.flush();
+		}
+	
 	public static XadrezPosicao lerXadrezPosicao(Scanner sc) {
 		try {
 			String s = sc.nextLine();
