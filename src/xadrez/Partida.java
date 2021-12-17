@@ -53,6 +53,12 @@ public class Partida {
 			throw new XadrezException("Erro: esse movimento não é permitido");
 		}
 	}
+	
+	private void validarPosicaoDestino (LinhasEColunas origem, LinhasEColunas destino) {
+		if (!tabuleiro.pecas(origem).movimentoPossivel(destino)) {
+			throw new XadrezException("Erro: a peça escolhida não pode alcançar a casa informada");
+		}
+	}
 
 	private void posicaoPecaNova(char coluna, int linha, XadrezPecas pecas) {
 		tabuleiro.PosicaoPeca(pecas, new XadrezPosicao(coluna, linha).toPosicao());

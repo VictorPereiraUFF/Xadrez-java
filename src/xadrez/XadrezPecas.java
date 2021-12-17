@@ -1,5 +1,6 @@
 package xadrez;
 
+import boardgame.LinhasEColunas;
 import boardgame.Pecas;
 import boardgame.Tabuleiro;
 
@@ -14,6 +15,11 @@ public abstract class XadrezPecas extends Pecas{
 
 	public XadrezJogador getXadrezJogador() {
 		return xadrezJogador;
+	}
+	
+	protected boolean pecaAdversaria (LinhasEColunas posicao) {
+		XadrezPecas p = (XadrezPecas)getTabuleiro().pecas(posicao);
+		return p != null && p.getXadrezJogador() != xadrezJogador;
 	}
 
 }
