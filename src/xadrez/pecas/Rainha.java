@@ -14,4 +14,10 @@ public class Rainha extends XadrezPecas{
 	public String toString() {
 		return "Q";
 	}
+
+	@Override
+	public boolean[][] movimentosPossiveis() {
+		boolean [][] mat = new boolean [getTabuleiro().getLinhas()][getTabuleiro().getColunas()];
+		return mat;
+	}
 }

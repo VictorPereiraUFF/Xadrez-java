@@ -49,6 +49,9 @@ public class Partida {
 		if (!tabuleiro.posicaoComPeca(posicao)) {
 			throw new XadrezException("Erro: a posição de origem declarada está vazia");
 		}
+		if (!tabuleiro.pecas(posicao).issoEPossivel()) {
+			throw new XadrezException("Erro: esse movimento não é permitido");
+		}
 	}
 
 	private void posicaoPecaNova(char coluna, int linha, XadrezPecas pecas) {

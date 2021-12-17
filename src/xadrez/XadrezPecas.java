@@ -3,7 +3,7 @@ package xadrez;
 import boardgame.Pecas;
 import boardgame.Tabuleiro;
 
-public class XadrezPecas extends Pecas{
+public abstract class XadrezPecas extends Pecas{
 	
 	private XadrezJogador xadrezJogador;
 
