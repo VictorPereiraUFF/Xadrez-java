@@ -23,14 +23,14 @@ public abstract class Pecas {
 	public boolean issoEPossivel() {
 		boolean [][] mat = movimentosPossiveis();
 		for (int i = 0; i < mat.length; i++) {
-			for (int j = 0; i < mat.length; j++) {
-
-				
+			for (int j = 0; j < mat.length; j++) {
+				if (mat[i][j]) {
 					return true;
-				}	
-			}
+				}
+			}	
+		}
 		
 		return false;
 	}
-	
+			
 }
