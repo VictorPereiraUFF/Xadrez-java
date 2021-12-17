@@ -32,7 +32,7 @@ public class Rainha extends XadrezPecas{
 		p.setValores(posicao.getLinha(), posicao.getColuna() -1);
 		while (getTabuleiro().posicaoExistente(p) && !getTabuleiro().posicaoComPeca(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
-			p.setLinha(p.getLinha() + 1);
+			p.setLinha(p.getLinha() - 1);
 		}
 		if (getTabuleiro().posicaoExistente(p) && pecaAdversaria(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
@@ -41,7 +41,7 @@ public class Rainha extends XadrezPecas{
 		p.setValores(posicao.getLinha() + 1, posicao.getColuna());
 		while (getTabuleiro().posicaoExistente(p) && !getTabuleiro().posicaoComPeca(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
-			p.setColuna(p.getColuna() - 1);
+			p.setColuna(p.getColuna() + 1);
 		}
 		if (getTabuleiro().posicaoExistente(p) && pecaAdversaria(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
@@ -50,7 +50,7 @@ public class Rainha extends XadrezPecas{
 		p.setValores(posicao.getLinha(), posicao.getColuna() + 1);
 		while (getTabuleiro().posicaoExistente(p) && !getTabuleiro().posicaoComPeca(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
-			p.setColuna(p.getColuna() - 1);
+			p.setColuna(p.getColuna() + 1);
 		}
 		if (getTabuleiro().posicaoExistente(p) && pecaAdversaria(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
