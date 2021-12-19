@@ -25,6 +25,10 @@ public class SistemaXadrez {
 				System.out.println();
 				System.out.print("Posição de origem: ");
 				XadrezPosicao origem = Interface.lerXadrezPosicao(sc); 
+				
+				boolean[][] movimentosPossiveis = partida.movimentosPossiveis(origem);
+				Interface.limparTela();
+				Interface.printTabuleiro(partida.getPecas(), movimentosPossiveis);
 				System.out.println();
 				System.out.print("Posição de destino: ");
 				XadrezPosicao destino = Interface.lerXadrezPosicao(sc); 
