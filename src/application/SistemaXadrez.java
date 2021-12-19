@@ -21,7 +21,7 @@ public class SistemaXadrez {
 		while (true) {
 			try {
 				Interface.limparTela();
-				Interface.printTabuleiro(partida.getPecas());
+				Interface.printPartida(partida);
 				System.out.println();
 				System.out.print("Posição de origem: ");
 				XadrezPosicao origem = Interface.lerXadrezPosicao(sc); 

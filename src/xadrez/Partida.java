@@ -12,11 +12,23 @@ import xadrez.pecas.Torre;
 
 public class Partida {
 
+	private int turno;
+	private XadrezJogador jogadorAtual;
 	private Tabuleiro tabuleiro;
 
 	public Partida() {
 		tabuleiro = new Tabuleiro(8, 8);
+		turno = 1;
+		jogadorAtual = XadrezJogador.BRANCO;
 		setupInicial();
+	}
+
+	public int getTurno() {
+		return turno;
+	}
+
+	public XadrezJogador getJogadorAtual() {
+		return jogadorAtual;
 	}
 
 	public XadrezPecas[][] getPecas() {
@@ -42,6 +54,7 @@ public class Partida {
 		validarPosicaoOrigem(origem);
 		validarPosicaoDestino(origem, destino);
 		Pecas pecaCapturada = movimento(origem, destino);
+		proximaRodada();
 		return (XadrezPecas) pecaCapturada;
 	}
 	
@@ -56,6 +69,9 @@ public class Partida {
 		if (!tabuleiro.posicaoComPeca(posicao)) {
 			throw new XadrezException("Erro: a posição de origem declarada está vazia");
 		}
+		if(jogadorAtual != ((XadrezPecas)tabuleiro.pecas(posicao)).getXadrezJogador()) {
+			throw new XadrezException("A peça escolhida é do jogador adversário, escolha uma peça sua");
+		}
 		if (!tabuleiro.pecas(posicao).issoEPossivel()) {
 			throw new XadrezException("Erro: esse movimento não é permitido");
 		}
@@ -65,6 +81,11 @@ public class Partida {
 		if (!tabuleiro.pecas(origem).movimentoPossivel(destino)) {
 			throw new XadrezException("Erro: a peça escolhida não pode alcançar a casa informada");
 		}
+	}
+	
+	private void proximaRodada() {
+		turno++;
+		jogadorAtual = (jogadorAtual == XadrezJogador.BRANCO) ? XadrezJogador.PRETO : XadrezJogador.BRANCO;
 	}
 
 	private void posicaoPecaNova(char coluna, int linha, XadrezPecas pecas) {
