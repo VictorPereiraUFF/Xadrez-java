@@ -19,7 +19,7 @@ public class SistemaXadrez {
 		
 		Scanner sc = new Scanner(System.in);
 		Partida partida = new Partida();
-		List<Partida> capturadas = new ArrayList<>();
+		List<XadrezPecas> capturadas = new ArrayList<>();
 		
 		while (true) {
 			try {
@@ -38,9 +38,9 @@ public class SistemaXadrez {
 				
 				XadrezPecas pecaCapturada = partida.moverPeca(origem, destino);
 				
-				/*if (pecaCapturada != null) {
+				if (pecaCapturada != null) {
 					capturadas.add(pecaCapturada);
-				}*/
+				}
 			}
 			catch (XadrezException e){
 				System.out.println(e.getMessage());
@@ -52,13 +52,5 @@ public class SistemaXadrez {
 			}
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		}
+	}
 }

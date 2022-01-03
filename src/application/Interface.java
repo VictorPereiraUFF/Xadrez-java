@@ -29,7 +29,7 @@ public class Interface {
 		}
 	}
 	
-	public static void printPartida(Partida partida, List<XadrezPecas> capturadas) {
+	public static void printPartida(Partida partida, List <XadrezPecas> capturadas) {
 		printTabuleiro(partida.getPecas());
 		System.out.println();
 		printPecasCapturadas(capturadas);
@@ -37,7 +37,7 @@ public class Interface {
 		System.out.println("Turno atual: " + partida.getTurno());
 		System.out.println("Aguardando jogador " + partida.getJogadorAtual() + " fazer sua jogada");
 		if (partida.getXeque()) {
-			System.out.println("XEQUE");
+			System.out.println("XEQUE!");
 		}
 	}
 	
@@ -71,17 +71,15 @@ public class Interface {
 			System.out.print(pecas);
 		}
 		System.out.print(" ");
-		
 	}
 	
 	private static void printPecasCapturadas(List<XadrezPecas> capturadas) {
-		List<XadrezPecas> branco = capturadas.stream().filter(x -> x.getXadrezJogador() == XadrezJogador.BRANCO).collect(Collectors.toList());
-		List<XadrezPecas> preto = capturadas.stream().filter(x -> x.getXadrezJogador() == XadrezJogador.PRETO).collect(Collectors.toList());
-		System.out.println("Peças capturadas: ");
-		System.out.print("Brancas: ");
-		System.out.println(Arrays.toString(branco.toArray()));
-		System.out.print("Pretas: ");
-		System.out.println(Arrays.toString(preto.toArray()));
-		
+		List <XadrezPecas> brancas = capturadas.stream().filter(x -> x.getXadrezJogador() == XadrezJogador.BRANCO).collect(Collectors.toList());
+		List <XadrezPecas> pretas = capturadas.stream().filter(x -> x.getXadrezJogador() == XadrezJogador.PRETO).collect(Collectors.toList());
+		System.out.println("Peças capturadas");
+		System.out.print("BRANCAS: ");
+		System.out.println(Arrays.toString(brancas.toArray()));
+		System.out.print("PRETAS: ");
+		System.out.println(Arrays.toString(pretas.toArray()));
 	}
 }
