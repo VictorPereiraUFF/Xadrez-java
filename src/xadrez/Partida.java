@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import boardgame.LinhasEColunas;
 import boardgame.Pecas;
 import boardgame.Tabuleiro;
+import xadrez.XadrezPecas;
 import xadrez.pecas.Bispo;
 import xadrez.pecas.Cavalo;
 import xadrez.pecas.Rainha;
@@ -20,8 +21,8 @@ public class Partida {
 	private Tabuleiro tabuleiro;
 	private boolean xeque;
 	
-	private List<Pecas> pecasNoTabuleiro = new ArrayList<>();
-	private List<Pecas> pecasCapturadas = new ArrayList<>();
+	private List<XadrezPecas> pecasNoTabuleiro = new ArrayList<>();
+	private List<XadrezPecas> pecasCapturadas = new ArrayList<>();
 
 	public Partida() {
 		tabuleiro = new Tabuleiro(8, 8);
@@ -83,7 +84,7 @@ public class Partida {
 		
 		if (pecaCapturada != null) {
 			pecasNoTabuleiro.remove(pecaCapturada);
-			pecasCapturadas.add(pecaCapturada);
+			pecasCapturadas.add((XadrezPecas) pecaCapturada);
 		}
 		return pecaCapturada;
 	}
@@ -95,7 +96,7 @@ public class Partida {
 		if(pecaCapturada != null) {
 			tabuleiro.PosicaoPeca(pecaCapturada, destino);
 			pecasCapturadas.remove(pecaCapturada);
-			pecasNoTabuleiro.add(pecaCapturada);
+			pecasNoTabuleiro.add((XadrezPecas) pecaCapturada);
 		}
 	}
 	

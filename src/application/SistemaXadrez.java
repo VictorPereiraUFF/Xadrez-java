@@ -38,9 +38,9 @@ public class SistemaXadrez {
 				
 				XadrezPecas pecaCapturada = partida.moverPeca(origem, destino);
 				
-				if (pecaCapturada != null) {
+				/*if (pecaCapturada != null) {
 					capturadas.add(pecaCapturada);
-				}
+				}*/
 			}
 			catch (XadrezException e){
 				System.out.println(e.getMessage());
