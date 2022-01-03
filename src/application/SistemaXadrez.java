@@ -21,7 +21,7 @@ public class SistemaXadrez {
 		Partida partida = new Partida();
 		List<XadrezPecas> capturadas = new ArrayList<>();
 		
-		while (true) {
+		while (!partida.getXequemate()) {
 			try {
 				Interface.limparTela();
 				Interface.printPartida(partida, capturadas);
@@ -51,6 +51,9 @@ public class SistemaXadrez {
 				sc.nextLine();
 			}
 		}
+		
+		Interface.limparTela();
+		Interface.printPartida(partida, capturadas);
 		
 	}
 }
