@@ -89,7 +89,8 @@ public class Partida {
 	}
 	
 	private Pecas movimento (LinhasEColunas origem, LinhasEColunas destino) {
-		Pecas p = tabuleiro.removerPeca(origem);
+		XadrezPecas p = (XadrezPecas)tabuleiro.removerPeca(origem);
+		p.contagemCrescente();
 		Pecas pecaCapturada = tabuleiro.removerPeca(destino);
 		tabuleiro.PosicaoPeca(p, destino);
 		
@@ -102,7 +103,8 @@ public class Partida {
 	}
 	
 	private void desfazerMovimento(LinhasEColunas origem, LinhasEColunas destino, Pecas pecaCapturada) {
-		Pecas p = tabuleiro.removerPeca(destino);
+		XadrezPecas p = (XadrezPecas)tabuleiro.removerPeca(destino);
+		p.contagemDecrescente();
 		tabuleiro.PosicaoPeca(p, origem);
 		
 		if (pecaCapturada != null) {

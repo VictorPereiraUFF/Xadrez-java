@@ -7,6 +7,7 @@ import boardgame.Tabuleiro;
 public abstract class XadrezPecas extends Pecas{
 	
 	private XadrezJogador xadrezJogador;
+	private int contagem;
 
 	public XadrezPecas(Tabuleiro tabuleiro, XadrezJogador xadrezJogador) {
 		super(tabuleiro);
@@ -15,6 +16,18 @@ public abstract class XadrezPecas extends Pecas{
 
 	public XadrezJogador getXadrezJogador() {
 		return xadrezJogador;
+	}
+	
+	public int getContagem() {
+		return contagem;
+	}
+	
+	public void contagemCrescente() {
+		contagem++;
+	}
+	
+	public void contagemDecrescente() {
+		contagem--;
 	}
 	
 	public XadrezPosicao getXadrezPosicao() {
