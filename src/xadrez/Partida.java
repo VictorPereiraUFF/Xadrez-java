@@ -9,6 +9,7 @@ import boardgame.Pecas;
 import boardgame.Tabuleiro;
 import xadrez.pecas.Bispo;
 import xadrez.pecas.Cavalo;
+import xadrez.pecas.Peão;
 import xadrez.pecas.Rainha;
 import xadrez.pecas.Rei;
 import xadrez.pecas.Torre;
@@ -148,7 +149,7 @@ public class Partida {
 				return (XadrezPecas)p;
 			}
 		}
-		throw new IllegalStateException ("Erro: não há um rei" + xadrezJogador + " no tabuleiro");
+		throw new IllegalStateException ("Erro: não há um rei " + xadrezJogador + " no tabuleiro");
 	}
 	
 	private boolean testarXeque(XadrezJogador xadrezJogador) {
@@ -194,6 +195,7 @@ public class Partida {
 	}
 
 	private void setupInicial() {
+		posicaoPecaNova('d', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
 		posicaoPecaNova('d', 1, new Rei(tabuleiro, XadrezJogador.BRANCO));
 		posicaoPecaNova('e', 1, new Rainha(tabuleiro, XadrezJogador.BRANCO));
 		posicaoPecaNova('a', 1, new Torre(tabuleiro, XadrezJogador.BRANCO));
@@ -210,6 +212,7 @@ public class Partida {
 		posicaoPecaNova('g', 8, new Cavalo(tabuleiro, XadrezJogador.PRETO));
 		posicaoPecaNova('c', 8, new Bispo(tabuleiro, XadrezJogador.PRETO));
 		posicaoPecaNova('f', 8, new Bispo(tabuleiro, XadrezJogador.PRETO));
+
 	}
 
 }
