@@ -130,7 +130,7 @@ public class Partida {
 			pecasNoTabuleiro.add(pecaCapturada);
 		}
 		
-		if (p instanceof Rei && destino.getColuna() == origem.getLinha() + 2) {
+		/*if (p instanceof Rei && destino.getColuna() == origem.getLinha() + 2) {
 			LinhasEColunas origemT = new LinhasEColunas(origem.getLinha(), origem.getColuna() + 3);
 			LinhasEColunas destinoT = new LinhasEColunas(origem.getLinha(), origem.getColuna() + 1);
 			XadrezPecas torre = (XadrezPecas)tabuleiro.removerPeca(destinoT);
@@ -144,7 +144,7 @@ public class Partida {
 			XadrezPecas torre = (XadrezPecas)tabuleiro.removerPeca(destinoT);
 			tabuleiro.PosicaoPeca(torre, origemT);
 			torre.contagemDecrescente();
-		}
+		}*/
 	}
 	
 	private void validarPosicaoOrigem(LinhasEColunas posicao) {

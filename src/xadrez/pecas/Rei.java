@@ -76,7 +76,7 @@ public class Rei extends XadrezPecas{
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 		
-		if (getContagem() == 0 && !partida.getXeque()) {
+		/*if (getContagem() == 0 && !partida.getXeque()) {
 			LinhasEColunas PT1 = new LinhasEColunas(posicao.getLinha(), posicao.getColuna() + 3);
 			if (testarRoque(PT1)) {
 				LinhasEColunas p1 = new LinhasEColunas(posicao.getLinha(), posicao.getColuna() + 1);
@@ -97,7 +97,7 @@ public class Rei extends XadrezPecas{
 				}
 
 			}
-		}
+		}*/
 		
 		return mat;
 	}
