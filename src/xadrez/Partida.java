@@ -21,6 +21,7 @@ public class Partida {
 	private Tabuleiro tabuleiro;
 	private boolean xeque;
 	private boolean xequemate;
+	private XadrezPecas enPassant;
 	
 	private List<Pecas> pecasNoTabuleiro = new ArrayList<>();
 	private List<Pecas> pecasCapturadas = new ArrayList<>();
@@ -48,6 +49,10 @@ public class Partida {
 		return xequemate;
 	}
 
+	public XadrezPecas getEnPassant() {
+		return enPassant;
+	}
+	
 	public XadrezPecas[][] getPecas() {
 		XadrezPecas[][] mat = new XadrezPecas[tabuleiro.getLinhas()][tabuleiro.getColunas()];
 		for (int i = 0; i < tabuleiro.getLinhas(); i++) {
@@ -77,6 +82,8 @@ public class Partida {
 			throw new XadrezException("Erro: você está se colocando em xeque");
 		}
 		
+		XadrezPecas pecaMexida = (XadrezPecas)tabuleiro.pecas(destino);
+		
 		xeque = (testarXeque(adversario(jogadorAtual))) ? true : false;
 		
 		if (testarXequemate(adversario(jogadorAtual))) {
@@ -84,6 +91,14 @@ public class Partida {
 		}
 		else {
 			proximaRodada();
+		}
+	
+		if (pecaMexida instanceof Peão && (destino.getLinha() == origem.getLinha() - 2) || (destino.getLinha() == origem.getLinha() + 2)) {
+			enPassant = pecaMexida;
+		}
+		
+		else {
+			enPassant = null;
 		}
 		
 		return (XadrezPecas) pecaCapturada;
@@ -116,6 +131,21 @@ public class Partida {
 			torre.contagemCrescente();
 		}
 		
+		if (p instanceof Peão) {
+			if (origem.getColuna() != destino.getColuna() && pecaCapturada == null) {
+				LinhasEColunas posicaoPeao;
+				if (p.getXadrezJogador() == XadrezJogador.BRANCO) {
+					posicaoPeao = new LinhasEColunas(destino.getLinha() + 1, destino.getColuna());
+				}
+				else {
+					posicaoPeao = new LinhasEColunas(destino.getLinha() - 1, destino.getColuna());
+				}
+				pecaCapturada = tabuleiro.removerPeca(posicaoPeao);
+				pecasCapturadas.add(pecaCapturada);
+				pecasNoTabuleiro.remove(pecaCapturada);
+			}
+		}
+		
 		return pecaCapturada;	
 	}
 	
@@ -145,6 +175,22 @@ public class Partida {
 			tabuleiro.PosicaoPeca(torre, origemT);
 			torre.contagemDecrescente();
 		}*/
+		
+		if (p instanceof Peão) {
+			if (origem.getColuna() != destino.getColuna() && pecaCapturada == enPassant) {
+				XadrezPecas peao = (XadrezPecas)tabuleiro.removerPeca(destino);
+				LinhasEColunas posicaoPeao;
+				if (p.getXadrezJogador() == XadrezJogador.BRANCO) {
+					posicaoPeao = new LinhasEColunas(3, destino.getColuna());
+				}
+				else {
+					posicaoPeao = new LinhasEColunas(4, destino.getColuna());
+				}
+				
+				tabuleiro.PosicaoPeca(peao, posicaoPeao);
+				
+			}
+		}
 	}
 	
 	private void validarPosicaoOrigem(LinhasEColunas posicao) {
@@ -235,14 +281,14 @@ public class Partida {
 		posicaoPecaNova('f', 1, new Bispo(tabuleiro, XadrezJogador.BRANCO));
 		posicaoPecaNova('g', 1, new Cavalo(tabuleiro, XadrezJogador.BRANCO));
 		posicaoPecaNova('h', 1, new Torre(tabuleiro, XadrezJogador.BRANCO));
-		posicaoPecaNova('a', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
-		posicaoPecaNova('b', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
-		posicaoPecaNova('c', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
-		posicaoPecaNova('d', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
-		posicaoPecaNova('e', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
-		posicaoPecaNova('f', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
-		posicaoPecaNova('g', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
-		posicaoPecaNova('h', 2, new Peão(tabuleiro, XadrezJogador.BRANCO));
+		posicaoPecaNova('a', 2, new Peão(tabuleiro, XadrezJogador.BRANCO, this));
+		posicaoPecaNova('b', 2, new Peão(tabuleiro, XadrezJogador.BRANCO, this));
+		posicaoPecaNova('c', 2, new Peão(tabuleiro, XadrezJogador.BRANCO, this));
+		posicaoPecaNova('d', 2, new Peão(tabuleiro, XadrezJogador.BRANCO, this));
+		posicaoPecaNova('e', 2, new Peão(tabuleiro, XadrezJogador.BRANCO, this));
+		posicaoPecaNova('f', 2, new Peão(tabuleiro, XadrezJogador.BRANCO, this));
+		posicaoPecaNova('g', 2, new Peão(tabuleiro, XadrezJogador.BRANCO, this));
+		posicaoPecaNova('h', 2, new Peão(tabuleiro, XadrezJogador.BRANCO, this));
 		posicaoPecaNova('a', 8, new Torre(tabuleiro, XadrezJogador.PRETO));
 		posicaoPecaNova('b', 8, new Cavalo(tabuleiro, XadrezJogador.PRETO));
 		posicaoPecaNova('c', 8, new Bispo(tabuleiro, XadrezJogador.PRETO));
@@ -251,14 +297,14 @@ public class Partida {
 		posicaoPecaNova('f', 8, new Bispo(tabuleiro, XadrezJogador.PRETO));
 		posicaoPecaNova('g', 8, new Cavalo(tabuleiro, XadrezJogador.PRETO));
 		posicaoPecaNova('h', 8, new Torre(tabuleiro, XadrezJogador.PRETO));
-		posicaoPecaNova('a', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
-		posicaoPecaNova('b', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
-		posicaoPecaNova('c', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
-		posicaoPecaNova('d', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
-		posicaoPecaNova('e', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
-		posicaoPecaNova('f', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
-		posicaoPecaNova('g', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
-		posicaoPecaNova('h', 7, new Peão(tabuleiro, XadrezJogador.PRETO));
+		posicaoPecaNova('a', 7, new Peão(tabuleiro, XadrezJogador.PRETO, this));
+		posicaoPecaNova('b', 7, new Peão(tabuleiro, XadrezJogador.PRETO, this));
+		posicaoPecaNova('c', 7, new Peão(tabuleiro, XadrezJogador.PRETO, this));
+		posicaoPecaNova('d', 7, new Peão(tabuleiro, XadrezJogador.PRETO, this));
+		posicaoPecaNova('e', 7, new Peão(tabuleiro, XadrezJogador.PRETO, this));
+		posicaoPecaNova('f', 7, new Peão(tabuleiro, XadrezJogador.PRETO, this));
+		posicaoPecaNova('g', 7, new Peão(tabuleiro, XadrezJogador.PRETO, this));
+		posicaoPecaNova('h', 7, new Peão(tabuleiro, XadrezJogador.PRETO, this));
 
 
 	}
