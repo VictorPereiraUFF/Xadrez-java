@@ -1,5 +1,6 @@
 package xadrez;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,6 +23,7 @@ public class Partida {
 	private boolean xeque;
 	private boolean xequemate;
 	private XadrezPecas enPassant;
+	private XadrezPecas promocao;
 	
 	private List<Pecas> pecasNoTabuleiro = new ArrayList<>();
 	private List<Pecas> pecasCapturadas = new ArrayList<>();
@@ -51,6 +53,10 @@ public class Partida {
 
 	public XadrezPecas getEnPassant() {
 		return enPassant;
+	}
+	
+	public XadrezPecas getPromocao() {
+		return promocao;
 	}
 	
 	public XadrezPecas[][] getPecas() {
@@ -84,6 +90,14 @@ public class Partida {
 		
 		XadrezPecas pecaMexida = (XadrezPecas)tabuleiro.pecas(destino);
 		
+		promocao = null;
+		if (pecaMexida instanceof Peão) {
+			if ((pecaMexida.getXadrezJogador() == XadrezJogador.BRANCO && destino.getLinha() == 0) || (pecaMexida.getXadrezJogador() == XadrezJogador.PRETO && destino.getLinha() == 7)) {
+				promocao = (XadrezPecas)tabuleiro.pecas(destino);
+				promocao = pecaPromovida("Q");
+			}
+		}
+		
 		xeque = (testarXeque(adversario(jogadorAtual))) ? true : false;
 		
 		if (testarXequemate(adversario(jogadorAtual))) {
@@ -102,6 +116,33 @@ public class Partida {
 		}
 		
 		return (XadrezPecas) pecaCapturada;
+	}
+	
+	public XadrezPecas pecaPromovida (String tipo) {
+		if (promocao == null) {
+			throw new IllegalStateException ("Não há nenhuma peça a ser promovida");
+		}
+		if (!tipo.equals("B") && !tipo.equals("C") && !tipo.equals("T") && !tipo.equals("Q")) {
+			throw new InvalidParameterException ("Erro: dados inválidos");
+		}
+		
+		LinhasEColunas pos = promocao.getXadrezPosicao().toPosicao();
+		Pecas p = tabuleiro.removerPeca(pos);
+		pecasNoTabuleiro.remove(p);
+		
+		XadrezPecas pecaNova = pecaNova(tipo, promocao.getXadrezJogador());
+		tabuleiro.PosicaoPeca(pecaNova, pos);
+		pecasNoTabuleiro.add(pecaNova);
+		
+		return pecaNova;
+	}
+	
+	private XadrezPecas pecaNova(String tipo, XadrezJogador xadrezJogador) {
+		if(tipo.equals("B")) return new Bispo(tabuleiro, xadrezJogador);
+		if(tipo.equals("C")) return new Cavalo(tabuleiro, xadrezJogador);
+		if(tipo.equals("Q")) return new Rainha(tabuleiro, xadrezJogador);
+		else return new Torre(tabuleiro, xadrezJogador);
+
 	}
 	
 	private Pecas movimento (LinhasEColunas origem, LinhasEColunas destino) {

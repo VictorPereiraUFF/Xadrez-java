@@ -41,6 +41,12 @@ public class SistemaXadrez {
 				if (pecaCapturada != null) {
 					capturadas.add(pecaCapturada);
 				}
+				
+				if (partida.getPromocao() != null) {
+					System.out.print("Escolha a peça para a promoção do seu peão: ");
+					String tipo = sc.nextLine();
+					partida.pecaPromovida(tipo);
+				}
 			}
 			catch (XadrezException e){
 				System.out.println(e.getMessage());
